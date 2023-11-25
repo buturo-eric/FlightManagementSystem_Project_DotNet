@@ -1,0 +1,24 @@
+﻿@page
+@model FMS.Pages.Users.LoginModel
+@{
+}
+<h2>Login</h2>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-info">@Model.Message</div>
+}
+
+<form method="post">
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" name="Email" required>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" name="Password" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>

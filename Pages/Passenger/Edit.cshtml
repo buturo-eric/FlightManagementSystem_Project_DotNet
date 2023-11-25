@@ -1,0 +1,243 @@
+﻿@page
+@model FMS.Pages.Passenger.EditModel
+@{
+}
+
+<div class="container">
+    @if (@Model.message.Length > 1)
+    {
+        <div class="alert alert-info">
+            <span>@Model.message</span>
+        </div>
+    }
+
+    <h3 class="text-center label">Edit Passenger</h3>
+    <hr />
+
+    <form method="POST" class="mt-4" asp-page-handler="OnPost">
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <!-- Left column -->
+            <div class="col">
+                <div class="form-group">
+                    <label for="id">Passenger Id</label>
+                    <input type="text" class="form-control mt-2" name="flightid" placeholder="Flight Id" value="@Model.passenger.flightId">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">First Name</label>
+                    <input type="text" class="form-control mt-2" name="firstName" placeholder="First Name" value="@Model.passenger.firstName">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Last Name</label>
+                    <input type="text" class="form-control mt-2" name="lastName" placeholder="Last Name" value="@Model.passenger.lastName">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Airline</label>
+                    <input type="text" class="form-control mt-2" name="airline" placeholder="Airline" value="@Model.passenger.airline">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Origin</label>
+                    <input type="text" class="form-control mt-2" name="origin" placeholder="Origin" value="@Model.passenger.origin">
+                </div>
+            </div>
+
+            <!-- Right column -->
+            <div class="col">
+                <div class="form-group">
+                    <label for="fullname">Destination</label>
+                    <input type="text" class="form-control mt-2" name="destination" placeholder="Destination" value="@Model.passenger.destination">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Seat Type</label>
+                    <input type="text" class="form-control mt-2" name="seatType" placeholder="Seat Type" value="@Model.passenger.seatType">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Seat Number</label>
+                    <input type="text" class="form-control mt-2" name="seatNumber" placeholder="Seat Number" value="@Model.passenger.seatNumber">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Booking Date</label>
+                    <input type="date" class="form-control mt-2" name="bookingDate" placeholder="Booking Date" value="@Model.passenger.bookingDate">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="offset-sm-3 col-sm-3 d-grid">
+                <button type="submit" class="btn btn-warning mt-4">Update</button>
+            </div>
+            <div class="col-sm-3 d-grid">
+                <a class="btn btn-outline-primary mt-4" href="/" role="button">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* @page
+@model FMS.Pages.Passenger.EditModel
+@{
+}
+
+<div class="container">
+    @if (@Model.message.Length > 1)
+    {
+        <div class="alert alert-info">
+            <span>@Model.message</span>
+        </div>
+    }
+
+    <h3 class="text-center label">Edit Passenger</h3>
+    <hr />
+
+    <form method="POST" class="mt-4" asp-page-handler="OnPost">
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="form-group col">
+                <label for="id">Passenger Id</label>
+                <input type="text" class="form-control mt-2" name="flightid" placeholder="Flight Id" value="@Model.passenger.flightId">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">First Name</label>
+                <input type="text" class="form-control mt-2" name="firstName" placeholder="First Name" value="@Model.passenger.firstName">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">Last Name</label>
+                <input type="text" class="form-control mt-2" name="lastName" placeholder="Last Name" value="@Model.passenger.lastName">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">Airline</label>
+                <input type="text" class="form-control mt-2" name="airline" placeholder="Airline" value="@Model.passenger.airline">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">Origin</label>
+                <input type="text" class="form-control mt-2" name="origin" placeholder="Origin" value="@Model.passenger.origin">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">Destination</label>
+                <input type="text" class="form-control mt-2" name="destination" placeholder="Destination" value="@Model.passenger.destination">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">Seat Type</label>
+                <input type="text" class="form-control mt-2" name="seatType" placeholder="Seat Type" value="@Model.passenger.seatType">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">Seat Number</label>
+                <input type="text" class="form-control mt-2" name="seatNumber" placeholder="Seat Number" value="@Model.passenger.seatNumber">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">Booking Date</label>
+                <input type="date" class="form-control mt-2" name="bookingDate" placeholder="Booking Date" value="@Model.passenger.bookingDate">
+            </div>
+        </div>
+    
+        <button type="submit" class="btn btn-warning mt-4">Update</button>
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+        </div>
+    </form>
+</div> *@
+
+
+
+
+@* <br />
+<h2>Edit Passenger</h2>
+@if (Model.errorMessage.Length > 0)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>@Model.errorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+}
+<form method="POST">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Flight Id</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="flightId" value="@Model.passengerInfo.flightId" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">First Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="firstName" value="@Model.passengerInfo.firstName" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Last Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="lastName" value="@Model.passengerInfo.lastName" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Airline</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="airline" value="@Model.passengerInfo.airline" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Origin</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="origin" value="@Model.passengerInfo.origin" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Destination</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="destination" value="@Model.passengerInfo.destination" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Seat Type</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="seatType" value="@Model.passengerInfo.seatType" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Seat Number</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="seatNumber" value="@Model.passengerInfo.seatNumber" />
+        </div>
+    </div>
+    
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Booking Date</label>
+        <div class="col-sm-6">
+            <input type="date" class="form-control" name="bookingDate" value="@Model.passengerInfo.bookingDate" />
+        </div>
+    </div>
+
+    @if (Model.successMessage.Length > 0)
+    {
+        <div class="row-cols-3 mb-3">
+            <div class="col-sm-9">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>@Model.successMessage</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+        </div>
+    </div>
+</form> *@

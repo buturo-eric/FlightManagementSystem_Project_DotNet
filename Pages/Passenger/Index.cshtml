@@ -1,0 +1,42 @@
+﻿@page
+@model FMS.Pages.Shared.Passenger.IndexModel
+@{
+}
+<br/>
+<h2>List of Passengers</h2>
+<a class='btn btn-primary btn-sm' href='/Passenger/CreatePassenger'> Add Passenger</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Airline</th>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>Seat Type</th>
+            <th>Seat Number</th>
+            <th>Booking Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listPassengers)
+        {
+            <tr>
+                <td>@item.flightId</td>
+                <td>@item.firstName</td>
+                <td>@item.lastName</td>
+                <td>@item.airline</td>
+                <td>@item.origin</td>
+                <td>@item.destination</td>
+                <td>@item.seatType</td>
+                <td>@item.seatNumber</td>
+                <td>@item.bookingDate</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Passenger/Edit?id=@item.flightId">Edit</a>
+                    <a class="btn btn-primary btn-sm" href="/Passenger/Delete?id=@item.flightId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

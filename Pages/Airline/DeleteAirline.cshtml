@@ -1,0 +1,47 @@
+﻿@page
+@using System.Data.SqlClient;
+
+<script>
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this record?");
+    }
+</script>
+
+@{
+    String id = Request.Query["id"];
+    bool isDeleteConfirmed = Request.Method == "POST" && Request.Form["deleteConfirmed"] == "true";
+
+    try
+    {
+        String connectionString = "Data Source=BUTURO\\SQLEXPRESS;Initial Catalog=FMSDB;Integrated Security=True";
+
+        if (isDeleteConfirmed)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                String sqlQuery = "DELETE FROM AIRLINE WHERE id=@id";
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            // Redirect after successful deletion
+            Response.Redirect("/Airline/CreateAirline");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("Error" + ex.Message);
+    }
+}
+
+<!-- Display confirmation message and form -->
+<form method="post" onsubmit="return confirmDelete()">
+    <p>Are you sure you want to delete this record?</p>
+    <input type="hidden" name="deleteConfirmed" value="true" />
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="/Airline/CreateAirline" class="btn btn-secondary">Cancel</a>
+</form>

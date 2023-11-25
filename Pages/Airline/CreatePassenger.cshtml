@@ -1,0 +1,97 @@
+﻿@page
+@model FMS.Pages.Shared.Passenger.CreatePassengerModel
+@{
+}
+
+<br />
+<h2>Add Passenger</h2>
+@if(Model.errorMessage.Length > 0)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>@Model.errorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+}
+<form method="POST">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Flight Id</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="flightId" value="@Model.passengerInfo.flightId" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">First Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="firstName" value="@Model.passengerInfo.firstName" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Last Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="lastName" value="@Model.passengerInfo.lastName" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Airline</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="airline" value="@Model.passengerInfo.airline" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Origin</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="origin" value="@Model.passengerInfo.origin" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Destination</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="destination" value="@Model.passengerInfo.destination" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Seat Type</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="seatType" value="@Model.passengerInfo.seatType" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Seat Number</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="seatNumber" value="@Model.passengerInfo.seatNumber" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Payment Status</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="paymentStatus" value="@Model.passengerInfo.paymentStatus" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Booking Date</label>
+        <div class="col-sm-6">
+            <input type="date" class="form-control" name="bookingDate" value="@Model.passengerInfo.bookingDate" />
+        </div>
+    </div>
+
+    @if (Model.successMessage.Length > 0)
+    {
+        <div class="row-cols-3 mb-3">
+            <div class="col-sm-9">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>@Model.successMessage</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+        </div>
+    </div>
+</form>

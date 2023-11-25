@@ -1,0 +1,64 @@
+﻿@page
+@model FMS.Pages.Airline.CreateAirlineModel
+@{
+}
+
+<div class="container">
+    @if (@Model.message.Length > 1)
+    {
+        <div class="alert alert-info">
+            <span>@Model.message</span>
+        </div>
+    }
+
+    <h3 class="text-center label">Add Airline</h3>
+    <hr />
+
+    <form method="POST" class="mt-4" asp-page-handler="OnPost">
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="form-group col">
+                <label for="id">Airline Id</label>
+                <input type="text" class="form-control mt-2" name="id" placeholder="Airline Id" value="@Model.airline.id">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">Airline Name</label>
+                <input type="text" class="form-control mt-2" name="name" placeholder="Airline Name" value="@Model.airline.name">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">Contact</label>
+                <input type="text" class="form-control mt-2" name="contact" placeholder="Contact" value="@Model.airline.contact">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+    </form>
+
+    <div class="container mt-4">
+        <h2>Airline Records</h2>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Airline ID</th>
+                    <th>Airline Name</th>
+                    <th>Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var airl in Model.airlineList)
+                {
+                    <tr>
+                        <td>@airl.id</td>
+                        <td>@airl.name</td>
+                        <td>@airl.contact</td>
+                        <td>
+                            <a class="btn btn-warning" href="/Airline/EditAirline?id=@airl.id">Edit</a>
+                            <a class="btn btn-danger" href="/Airline/DeleteAirline?id=@airl.id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

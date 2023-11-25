@@ -1,0 +1,99 @@
+﻿@page
+@model FMS.Pages.Flight.CreateFlightModel
+@{
+}
+<div class="container">
+    @if (@Model.message.Length > 1)
+    {
+        <div class="alert alert-info">
+            <span>@Model.message</span>
+        </div>
+    }
+
+    <h3 class="text-center label">Add Flight</h3>
+    <hr />
+
+    <form method="POST" class="mt-4" asp-page-handler="OnPost">
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <!-- Left column -->
+            <div class="col">
+                <div class="form-group">
+                    <label for="id">Flight Id</label>
+                    <input type="text" class="form-control mt-2" name="flightid" placeholder="Flight Id" value="@Model.flight.flightID">
+                </div>
+                <div class="form-group">
+                    <label for="id">Airline Id</label>
+                    <input type="text" class="form-control mt-2" name="airlineId" placeholder="Airline Id" value="@Model.flight.airlineId">
+                </div>
+                <div class="form-group">
+                    <label for="origin">Origin</label>
+                    <input type="text" class="form-control mt-2" name="origin" placeholder="Origin" value="@Model.flight.origin">
+                </div>
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" class="form-control mt-2" name="destination" placeholder="Destination" value="@Model.flight.destination">
+                </div>
+                
+            </div>
+
+            <!-- Right column -->
+            <div class="col">
+                <div class="form-group">
+                    <label for="fullname">Departure Time</label>
+                    <input type="datetime-local" class="form-control mt-2" name="departureTime" placeholder="Departure Time" value="@Model.flight.departureTime">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Arrival Time</label>
+                    <input type="datetime-local" class="form-control mt-2" name="arrivalTime" placeholder="Arrival Time" value="@Model.flight.arrivalTime">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Available Seats</label>
+                    <input type="text" class="form-control mt-2" name="availableSeats" placeholder="Available Seats" value="@Model.flight.availableSeats">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Ticket Price</label>
+                    <input type="text" class="form-control mt-2" name="ticketPrice" placeholder="Ticket Price" value="@Model.flight.ticketPrice">
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+
+    </form>
+
+    <div class="container mt-4">
+        <h2>Flight Records</h2>
+        <br />
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Flight ID</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Time</th>
+                    <th>Available Seats</th>
+                    <th>Ticket Price</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var flight in Model.flightList)
+                {
+                    <tr>
+                        <td>@flight.flightID</td>
+                        <td>@flight.departureTime</td>
+                        <td>@flight.arrivalTime</td>
+                        <td>@flight.availableSeats</td>
+                        <td>@flight.ticketPrice</td>
+                        <td>
+                            <a class="btn btn-warning" href="/Flight/Edit?flightId=@flight.flightID">Edit</a>
+                            <a class="btn btn-danger" href="/Flight/Delete?flightId=@flight.flightID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

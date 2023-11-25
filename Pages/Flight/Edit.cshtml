@@ -1,0 +1,70 @@
+﻿@page
+@model FMS.Pages.Flight.EditFlightModel
+@{
+}
+<div class="container">
+    @if (@Model.message.Length > 1)
+    {
+        <div class="alert alert-info">
+            <span>@Model.message</span>
+        </div>
+    }
+
+    <h3 class="text-center label">Edit Flight</h3>
+    <hr />
+
+    <form method="POST" class="mt-4" asp-page-handler="OnPost">
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <!-- Left column -->
+            <div class="col">
+                <div class="form-group">
+                    <label for="id">Flight Id</label>
+                    <input type="text" class="form-control mt-2" name="flightid" placeholder="Flight Id" value="@Model.flight.flightID">
+                </div>
+                <div class="form-group">
+                    <label for="id">Airline Id</label>
+                    <input type="text" class="form-control mt-2" name="airlineId" placeholder="Airline Id" value="@Model.flight.airlineId">
+                </div>
+                <div class="form-group">
+                    <label for="origin">Origin</label>
+                    <input type="text" class="form-control mt-2" name="origin" placeholder="Origin" value="@Model.flight.origin">
+                </div>
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" class="form-control mt-2" name="destination" placeholder="Destination" value="@Model.flight.destination">
+                </div>
+
+            </div>
+
+            <!-- Right column -->
+            <div class="col">
+                <div class="form-group">
+                    <label for="fullname">Departure Time</label>
+                    <input type="datetime-local" class="form-control mt-2" name="departureTime" placeholder="Departure Time" value="@Model.flight.departureTime">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Arrival Time</label>
+                    <input type="datetime-local" class="form-control mt-2" name="arrivalTime" placeholder="Arrival Time" value="@Model.flight.arrivalTime">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Available Seats</label>
+                    <input type="text" class="form-control mt-2" name="availableSeats" placeholder="Available Seats" value="@Model.flight.availableSeats">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Ticket Price</label>
+                    <input type="text" class="form-control mt-2" name="ticketPrice" placeholder="Ticket Price" value="@Model.flight.ticketPrice">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="offset-sm-3 col-sm-3 d-grid">
+                <button type="submit" class="btn btn-warning mt-4">Update</button>
+            </div>
+            <div class="col-sm-3 d-grid">
+                <a class="btn btn-outline-primary mt-4" href="/" role="button">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>

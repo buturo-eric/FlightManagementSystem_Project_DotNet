@@ -1,0 +1,170 @@
+﻿@page
+@model FMS.Pages.Passenger.CreatePassengerModel
+@{
+}
+<div class="container">
+    @if (@Model.message.Length > 1)
+    {
+        <div class="alert alert-info">
+            <span>@Model.message</span>
+        </div>
+    }
+
+    <h3 class="text-center label">Book</h3>
+    <hr />
+
+    <form method="POST" class="mt-4" asp-page-handler="OnPost">
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <!-- Left column -->
+            <div class="col">
+                <div class="form-group">
+                    <label for="id">Flight Id</label>
+                    <input type="text" class="form-control mt-2" name="flightid" placeholder="Flight Id" value="@Model.passenger.flightId">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">First Name</label>
+                    <input type="text" class="form-control mt-2" name="firstName" placeholder="First Name" value="@Model.passenger.firstName">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Last Name</label>
+                    <input type="text" class="form-control mt-2" name="lastName" placeholder="Last Name" value="@Model.passenger.lastName">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Airline</label>
+                    <input type="text" class="form-control mt-2" name="airline" placeholder="Airline" value="@Model.passenger.airline">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Origin</label>
+                    <input type="text" class="form-control mt-2" name="origin" placeholder="Origin" value="@Model.passenger.origin">
+                </div>
+            </div>
+
+            <!-- Right column -->
+            <div class="col">
+                <div class="form-group">
+                    <label for="fullname">Destination</label>
+                    <input type="text" class="form-control mt-2" name="destination" placeholder="Destination" value="@Model.passenger.destination">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Seat Type</label>
+                    <input type="text" class="form-control mt-2" name="seatType" placeholder="Seat Type" value="@Model.passenger.seatType">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Seat Number</label>
+                    <input type="text" class="form-control mt-2" name="seatNumber" placeholder="Seat Number" value="@Model.passenger.seatNumber">
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Booking Date</label>
+                    <input type="date" class="form-control mt-2" name="bookingDate" placeholder="Booking Date" value="@Model.passenger.bookingDate">
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+
+    </form>
+
+    <div class="container mt-4">
+        <h2>Passenger Records</h2>
+        <br />
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Flitght ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Airline</th>
+                    <th>Origin</th>
+                    <th>Destination</th>
+                    <th>Seat Type</th>
+                    <th>Seat Number</th>
+                    <th>Booking Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var pass in Model.passengerList)
+                {
+                    <tr>
+                        <td>@pass.flightId</td>
+                        <td>@pass.firstName</td>
+                        <td>@pass.lastName</td>
+                        <td>@pass.airline</td>
+                        <td>@pass.origin</td>
+                        <td>@pass.destination</td>
+                        <td>@pass.seatType</td>
+                        <td>@pass.seatNumber</td>
+                        <td>@pass.bookingDate</td>
+                        <td>
+                            <a class="btn btn-warning" href="/Passenger/Edit?flightId=@pass.flightId">Edit</a>
+                            <a class="btn btn-danger" href="/Passenger/Delete?flightId=@pass.flightId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* <form method="POST" class="mt-4" asp-page-handler="OnPost">
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="form-group col">
+                <label for="id">Passenger Id</label>
+                <input type="text" class="form-control mt-2" name="flightid" placeholder="Flight Id" value="@Model.passenger.flightId">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">First Name</label>
+                <input type="text" class="form-control mt-2" name="firstName" placeholder="First Name" value="@Model.passenger.firstName">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">Last Name</label>
+                <input type="text" class="form-control mt-2" name="lastName" placeholder="Last Name" value="@Model.passenger.lastName">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">Airline</label>
+                <input type="text" class="form-control mt-2" name="airline" placeholder="Airline" value="@Model.passenger.airline">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">Origin</label>
+                <input type="text" class="form-control mt-2" name="origin" placeholder="Origin" value="@Model.passenger.origin">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">Destination</label>
+                <input type="text" class="form-control mt-2" name="destination" placeholder="Destination" value="@Model.passenger.destination">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">Seat Type</label>
+                <input type="text" class="form-control mt-2" name="seatType" placeholder="Seat Type" value="@Model.passenger.seatType">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">Seat Number</label>
+                <input type="text" class="form-control mt-2" name="seatNumber" placeholder="Seat Number" value="@Model.passenger.seatNumber">
+            </div>
+            <div class="form-group col">
+                <label for="fullname">Booking Date</label>
+                <input type="date" class="form-control mt-2" name="bookingDate" placeholder="Booking Date" value="@Model.passenger.bookingDate">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+    </form> *@
