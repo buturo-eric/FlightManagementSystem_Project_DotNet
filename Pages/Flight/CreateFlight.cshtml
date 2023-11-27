@@ -24,8 +24,10 @@
                     <input type="text" class="form-control mt-2" name="flightid" placeholder="Flight Id" value="@Model.flight.flightID">
                 </div>
                 <div class="form-group">
-                    <label for="id">Airline Id</label>
-                    <input type="text" class="form-control mt-2" name="airlineId" placeholder="Airline Id" value="@Model.flight.airlineId">
+                    <label for="airlineId">Airline</label>
+                    <select asp-for="flight.airlineId" asp-items="Model.AirlineSelectList" name="airlineId" class="form-control">
+                        <option value="">Select Airline</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="origin">Origin</label>
@@ -50,11 +52,11 @@
                 </div>
                 <div class="form-group">
                     <label for="fullname">Available Seats</label>
-                    <input type="text" class="form-control mt-2" name="availableSeats" placeholder="Available Seats" value="@Model.flight.availableSeats">
+                    <input type="number" class="form-control mt-2" name="availableSeats" placeholder="Available Seats" value="@Model.flight.availableSeats">
                 </div>
                 <div class="form-group">
                     <label for="fullname">Ticket Price</label>
-                    <input type="text" class="form-control mt-2" name="ticketPrice" placeholder="Ticket Price" value="@Model.flight.ticketPrice">
+                    <input type="number" class="form-control mt-2" name="ticketPrice" placeholder="Ticket Price" value="@Model.flight.ticketPrice">
                 </div>
             </div>
         </div>
@@ -70,11 +72,13 @@
             <thead class="thead-dark">
                 <tr>
                     <th>Flight ID</th>
+                    <th>Airline Name</th>
+                    <th>Origin</th>
+                    <th>Destination</th>
                     <th>Departure Time</th>
                     <th>Arrival Time</th>
                     <th>Available Seats</th>
                     <th>Ticket Price</th>
-                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -82,6 +86,9 @@
                 {
                     <tr>
                         <td>@flight.flightID</td>
+                        <td>@flight.airlineId</td>
+                        <td>@flight.origin</td>
+                        <td>@flight.destination</td>
                         <td>@flight.departureTime</td>
                         <td>@flight.arrivalTime</td>
                         <td>@flight.availableSeats</td>

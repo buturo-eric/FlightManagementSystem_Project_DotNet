@@ -47,12 +47,12 @@ namespace FMS.Pages.Users
                 if (user.role == "Admin")
                 {
                     Message = "Admin Logged In";
-                    return RedirectToPage("/Index");
+                    return RedirectToPage("/Users/Admin");
                 }
                 else if (user.role == "Staff")
                 {
                     Message = "Staff Logged In";
-                    return RedirectToPage("/Index");
+                    return RedirectToPage("/Users/Users");
                     
                 }
                 // Add more roles and redirects as needed

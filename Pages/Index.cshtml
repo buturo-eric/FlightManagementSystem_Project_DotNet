@@ -4,15 +4,32 @@
     ViewData["Title"] = "Home page";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
+    <style>
+       img{
+           height: 177px;
+           width: 387px;
+           margin-left: 372px;
+           margin-bottom:-46px;
+       }
+
+    .wel{
+        color: #14213d;
+        font-weight: bold;
+        font-weight: 1200;
+    }
+
+    .lead{
+        color: #14213d;
+        font-weight: 500;
+        font-size:100px;
+    }
+    </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <title>@ViewData["Title"]</title>
-</head>
-<body>
+
+    <img src="~/image/pngegg.png" class="img">
 
     <div class="container mt-5">
         @if (!string.IsNullOrEmpty(Model.Message))
@@ -21,9 +38,7 @@
         }
 
         <div class="text-center">
-            <h1 class="display-4">Welcome</h1>
+            <h1 class="wel">Welcome</h1>
             <p class="lead">Experience a world of convenience with DreamMiles benefits.</p>
         </div>
     </div>
-</body>
-</html>

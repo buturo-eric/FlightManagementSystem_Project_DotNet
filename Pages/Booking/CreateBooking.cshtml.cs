@@ -17,7 +17,7 @@ namespace FMS.Pages.Booking
         public void OnGet()
         {
             if (TempData.Count > 0)
-                message = TempData["Message"] as string;
+                message = TempData["BookingMessage"] as string;
 
             loadBookingList();
         }

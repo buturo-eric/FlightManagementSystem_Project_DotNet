@@ -1,0 +1,30 @@
+﻿@page
+@model FMS.Pages.Users.AdminModel
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+</head>
+<style>
+
+    h1{
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        font-weight: 100;
+        line-height: 1.2;
+    }
+</style>
+<body>
+
+    <h1>Welcome, Admin!</h1>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p>Admin successfully logged in.</p>
+    }
+
+</body>
+</html>

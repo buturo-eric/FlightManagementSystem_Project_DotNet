@@ -1,17 +1,15 @@
 ﻿@page
 @model FMS.Pages.Booking.CreateBookingModel
 @{
+    ViewData["Title"] = "Create Booking";
 }
 <div class="container">
-    @if (@Model.message.Length > 1)
-    {
-        <div class="alert alert-info">
-            <span>@Model.message</span>
-        </div>
-    }
-
-    <h3 class="text-center label">Add Details</h3>
+    <h2 class="text-center label">Booking Details</h2>
     <hr />
+
+    <div class="alert alert-success">
+        <span>@TempData["BookingMessage"]</span>
+    </div>
 
     <form method="POST" class="mt-4" asp-page-handler="OnPost">
         @Html.AntiForgeryToken()
@@ -20,16 +18,12 @@
             <!-- Left column -->
             <div class="col">
                 <div class="form-group">
-                    <label for="id">Airline Id</label>
-                    <input type="text" class="form-control mt-2" name="airlineId" placeholder="Airline Id" value="@Model.flight.airlineId">
+                    <label for="firstName">First Name</label>
+                    <input type="text" required class="form-control mt-2" name="firstName" placeholder="First Name" value="@Model.booking.firstName">
                 </div>
                 <div class="form-group">
-                    <label for="origin">Origin</label>
-                    <input type="text" class="form-control mt-2" name="origin" placeholder="Origin" value="@Model.flight.origin">
-                </div>
-                <div class="form-group">
-                    <label for="destination">Destination</label>
-                    <input type="text" class="form-control mt-2" name="destination" placeholder="Destination" value="@Model.flight.destination">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" required class="form-control mt-2" name="lastName" placeholder="Last Name" value="@Model.booking.lastName">
                 </div>
 
             </div>
@@ -37,21 +31,13 @@
             <!-- Right column -->
             <div class="col">
                 <div class="form-group">
-                    <label for="fullname">Departure Time</label>
-                    <input type="datetime-local" class="form-control mt-2" name="departureTime" placeholder="Departure Time" value="@Model.flight.departureTime">
+                    <label for="number">Number of people</label>
+                    <input type="text" required class="form-control mt-2" name="number" placeholder="Number of people" value="@Model.booking.number">
                 </div>
                 <div class="form-group">
-                    <label for="fullname">Arrival Time</label>
-                    <input type="datetime-local" class="form-control mt-2" name="arrivalTime" placeholder="Arrival Time" value="@Model.flight.arrivalTime">
-                </div>
-                <div class="form-group">
-                    <label for="fullname">Available Seats</label>
-                    <input type="text" class="form-control mt-2" name="availableSeats" placeholder="Available Seats" value="@Model.flight.availableSeats">
-                </div>
-                <div class="form-group">
-                    <label for="fullname">Ticket Price</label>
-                    <input type="text" class="form-control mt-2" name="ticketPrice" placeholder="Ticket Price" value="@Model.flight.ticketPrice">
-                </div>
+                    <label for="payment">Payment Method</label>
+                    <input type="text" required class="form-control mt-2" name="payment" placeholder="Payment" value="@Model.booking.payment">
+                </div>          
             </div>
         </div>
 

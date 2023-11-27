@@ -1,27 +1,22 @@
-﻿namespace FMS.Pages.Flight
-
+﻿namespace FMS.Pages.Booking
 {
-    using Airline;
-
-    public class Flight
+    public class CheckFlight
     {
         public string? flightID { get; set; }
-        public string? airlineId {  get; set; }
-        public string? AirlineName { get; set; }
-        public string? origin {  get; set; }
-        public string? destination { get; set; }
+        public String? airlineId { get; set; }
+        public String? origin { get; set; }
+        public String? destination { get; set; }
         public DateTime? departureTime { get; set; }
         public DateTime? arrivalTime { get; set; }
         public string? availableSeats { get; set; }
         public string? ticketPrice { get; set; }
 
-        public Flight() { }
+        public CheckFlight() { }
 
-        public Flight(string? flightID, string? airlineId, string? airlineName, string? origin, string? destination, DateTime? departureTime, DateTime? arrivalTime, string? availableSeats, string? ticketPrice)
+        public CheckFlight(string? flightID, string? airlineId, string? origin, string? destination, DateTime? departureTime, DateTime? arrivalTime, string? availableSeats, string? ticketPrice)
         {
             this.flightID = flightID;
             this.airlineId = airlineId;
-            AirlineName = airlineName;
             this.origin = origin;
             this.destination = destination;
             this.departureTime = departureTime;
@@ -30,4 +25,6 @@
             this.ticketPrice = ticketPrice;
         }
     }
+
+
 }

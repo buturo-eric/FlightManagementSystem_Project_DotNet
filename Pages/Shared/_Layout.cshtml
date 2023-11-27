@@ -7,24 +7,98 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FMS.styles.css" asp-append-version="true" />
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #14213d;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav.navbar {
+            background-color: #14213d;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #f8f9fa;
+            }
+
+        main {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        footer {
+            padding: 20px 0;
+            background-color: #14213d;
+            color: #fff;
+            text-align: center;
+            margin-bottom: -139px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Flight Management System</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+        <h1>Flight Management System</h1>
+    </header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            @* <a class="navbar-brand" asp-area="" asp-page="/Index">FMS</a> *@
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                    </li>
+                    @if (Context.Request.Path.StartsWithSegments("/Users/Admin"))
+                    {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Passenger/CreatePassenger">Passenger</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Airline/CreateAirline">Airline</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Flight/CreateFlight">Flights</a>
                         </li>
                         @* <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/CheckBooking">Bookings</a>
                         </li> *@
+                        @* <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/CheckFlights">Available Flights</a>
+                        </li> *@
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/CheckBooking">Bookings</a>
+                        </li>
+                    }
+                    @if (Context.Request.Path.StartsWithSegments("/Passenger/CreatePassenger"))
+                    {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Passenger/CreatePassenger">Passenger</a>
                         </li>
@@ -35,16 +109,114 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Flight/CreateFlight">Flights</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/CheckBooking">Bookings</a>
+                        </li>
+                    }
+                    @if (Context.Request.Path.StartsWithSegments("/Airline/CreateAirline"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Passenger/CreatePassenger">Passenger</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Airline/CreateAirline">Airline</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Flight/CreateFlight">Flights</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/CheckBooking">Bookings</a>
+                        </li>
+                    }
+                    @if (Context.Request.Path.StartsWithSegments("/Flight/CreateFlight"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Passenger/CreatePassenger">Passenger</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Airline/CreateAirline">Airline</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Flight/CreateFlight">Flights</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/CheckBooking">Bookings</a>
+                        </li>
+                    }
+                    @if (Context.Request.Path.StartsWithSegments("/"))
+                    {
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Users/Signup">Sign up</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Login</a>
                         </li>
-                    </ul>
-                </div>
+                    }
+                    @if (Context.Request.Path.StartsWithSegments("/Users/Login"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Users/Signup">Sign up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Login</a>
+                        </li>
+                    }
+                    @if (Context.Request.Path.StartsWithSegments("/Users/Signup"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Users/Signup">Sign up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Users/Login">Login</a>
+                        </li>
+                    }
+                    @if (Context.Request.Path.StartsWithSegments("/Booking/CheckFlights"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/CheckFlights">Flights</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/CheckBooking_user">Bookings</a>
+                        </li>
+                    }
+                    @if (Context.Request.Path.StartsWithSegments("/Booking/CheckBooking"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Passenger/CreatePassenger">Passenger</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Airline/CreateAirline">Airline</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Flight/CreateFlight">Flights</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/CheckBooking">Bookings</a>
+                        </li>
+                    }
+                    @if (Context.Request.Path.StartsWithSegments("/Users/Users"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/CheckFlights">Flights</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/CheckBooking_user">Bookings</a>
+                        </li>
+                       
+                    }
+                    @if (Context.Request.Path.StartsWithSegments("/Booking/CheckBooking_user"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/CheckFlights">Flights</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/CheckBooking_user">Bookings</a>
+                        </li>
+                    }
+                    
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

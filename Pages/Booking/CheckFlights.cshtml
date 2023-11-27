@@ -1,0 +1,50 @@
+﻿@page
+@model FMS.Pages.Booking.CheckFlightsModel
+@{
+    ViewData["Title"] = "Check Flight";
+}
+<div class="container">
+    <h2 class="text-center label">Flight Information</h2>
+    <hr />
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Flight ID</th>
+                <th>Airline Name</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+                <th>Available Seats</th>
+                <th>Ticket Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in Model.FlightList)
+    {
+        <tr>
+            <td>@flight.flightID</td>
+            <td>@flight.airlineId</td>
+            <td>@flight.origin</td>
+            <td>@flight.destination</td>
+            <td>@flight.departureTime</td>
+            <td>@flight.arrivalTime</td>
+            <td>@flight.availableSeats</td>
+            <td>@flight.ticketPrice</td>
+            <td>
+                <form method="post" asp-page-handler="BookNow">
+                    <input type="hidden" name="flightID" value="@flight.flightID" />
+                            <button type="submit" class="btn btn-outline-success">Book Now</button>
+                            
+                </form>
+            </td>
+            @* <td>
+                <a asp-page="/CreateFlight" asp-route-availableSeats="@flight.availableSeats"
+                               asp-route-ticketPrice="@flight.ticketPrice" class="btn btn-outline-success">Book Now</a>
+            </td> *@
+        </tr>
+    }
+        </tbody>
+    </table>
+</div>

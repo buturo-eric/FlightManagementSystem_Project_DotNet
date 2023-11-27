@@ -10,7 +10,7 @@
         </div>
     }
 
-    <h3 class="text-center label">Book</h3>
+    <h3 class="text-center label">Add Booking</h3>
     <hr />
 
     <form method="POST" class="mt-4" asp-page-handler="OnPost">
@@ -53,7 +53,7 @@
                 </div>
                 <div class="form-group">
                     <label for="fullname">Seat Number</label>
-                    <input type="text" class="form-control mt-2" name="seatNumber" placeholder="Seat Number" value="@Model.passenger.seatNumber">
+                    <input type="number" class="form-control mt-2" name="seatNumber" placeholder="Seat Number" value="@Model.passenger.seatNumber">
                 </div>
                 <div class="form-group">
                     <label for="fullname">Booking Date</label>
@@ -67,7 +67,7 @@
     </form>
 
     <div class="container mt-4">
-        <h2>Passenger Records</h2>
+        <h2>Booking Records</h2>
         <br />
         <table class="table table-striped">
             <thead class="thead-dark">
