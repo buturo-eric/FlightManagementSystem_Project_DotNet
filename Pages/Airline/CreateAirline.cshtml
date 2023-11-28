@@ -11,7 +11,7 @@
         </div>
     }
 
-    <h3 class="text-center label">Add Airline</h3>
+    <h2 class="text-center label">Add Airline</h2>
     <hr />
 
     <form method="POST" class="mt-4" asp-page-handler="OnPost">
@@ -22,11 +22,11 @@
                 <input type="text" class="form-control mt-2" name="id" placeholder="Airline Id" value="@Model.airline.id">
             </div>
             <div class="form-group col">
-                <label for="fullname">Airline Name</label>
+                <label for="airlineName">Airline Name</label>
                 <input type="text" class="form-control mt-2" name="name" placeholder="Airline Name" value="@Model.airline.name">
             </div>
             <div class="form-group col">
-                <label for="fullname">Contact</label>
+                <label for="contact">Contact</label>
                 <input type="text" class="form-control mt-2" name="contact" placeholder="Contact" value="@Model.airline.contact">
             </div>
         </div>
