@@ -18,7 +18,7 @@ namespace FMS.Pages.Booking
             FlightList = GetFlightList();
         }
 
-        public IActionResult OnPostBookNow(string flightID)
+        /*public IActionResult OnPostBookNow(string flightID)
         {
             // Fetch additional details about the flight based on the flightID
             CheckFlight flight = GetFlightDetails(flightID);
@@ -42,6 +42,7 @@ namespace FMS.Pages.Booking
                 return RedirectToPage("/Booking/CheckFlights");
             }
         }
+        */
         private List<CheckFlight> GetFlightList()
         {
             List<CheckFlight> flightList = new List<CheckFlight>();
@@ -121,8 +122,7 @@ namespace FMS.Pages.Booking
                                     destination = reader.GetString(3),
                                     departureTime = reader.GetDateTime(4),
                                     arrivalTime = reader.GetDateTime(5),
-                                    availableSeats = reader.GetString(6),
-                                    ticketPrice = reader.GetString(7)
+                                    ticketPrice = reader.GetString(6)
                                 };
 
                                 return flight;
@@ -181,7 +181,7 @@ namespace FMS.Pages.Booking
             }
         }
 
-        private void SaveBookingDetails(CheckFlight flight)
+        /*private void SaveBookingDetails(CheckFlight flight)
         {
             try
             {
@@ -213,6 +213,6 @@ namespace FMS.Pages.Booking
             {
                 Console.WriteLine("There's a problem saving booking details: " + ex.Message);
             }
-        }
+        }*/
     }
 }

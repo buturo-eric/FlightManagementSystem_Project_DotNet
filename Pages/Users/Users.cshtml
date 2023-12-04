@@ -2,28 +2,38 @@
 @model FMS.Pages.Users.UsersModel
 @{
 }
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>User Page</title>
+    <style>
+        h1 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 100;
+            line-height: 1.2;
+        }
+
+        .userimg {
+            width: 253px;
+            height: 238px;
+        }
+
+        
+    </style>
+
+
 </head>
-<style>
-
-    h1 {
-        margin-top: 0;
-        margin-bottom: 0.5rem;
-        font-weight: 100;
-        line-height: 1.2;
-    }
-</style>
 <body>
-
-    <h1>Welcome, User!</h1>
-
+    <center>
+        <h1>Welcome, User!</h1>
+        <img src="~/image/—Pngtree—user vector avatar_4830521.png" class="userimg" />
+        <div><h1>Cheers to your arrival!</h1></div>
+    </center>
     @if (User.Identity.IsAuthenticated)
     {
         <p>User successfully logged in.</p>
     }
-
 </body>
 </html>

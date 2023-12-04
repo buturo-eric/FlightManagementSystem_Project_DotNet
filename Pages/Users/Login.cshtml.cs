@@ -10,6 +10,8 @@ namespace FMS.Pages.Users
     {
         private readonly string conString = "Data Source=BUTURO\\SQLEXPRESS;Initial Catalog=FMSDB;Integrated Security=True";
 
+        User users = new User();
+
         [BindProperty]
         public string Email { get; set; }
 
@@ -42,15 +44,18 @@ namespace FMS.Pages.Users
 
             if (user != null)
             {
+                int userId = GetUserIdFromDatabase(Email, encryptPassword);
                 Console.WriteLine($"User role: {user.role}");
                 // Redirect based on user role
                 if (user.role == "Admin")
                 {
+                    HttpContext.Session.SetInt32("UserId", userId);
                     Message = "Admin Logged In";
                     return RedirectToPage("/Users/Admin");
                 }
                 else if (user.role == "Staff")
                 {
+                    HttpContext.Session.SetInt32("UserId", userId);
                     Message = "Staff Logged In";
                     return RedirectToPage("/Users/Users");
                     
@@ -79,6 +84,33 @@ namespace FMS.Pages.Users
             }
         }
 
+        private int GetUserIdFromDatabase(string email, string password)
+        {
+            using (SqlConnection connection = new SqlConnection(conString))
+            {
+                connection.Open();
+
+                string query = "SELECT id FROM USERS WHERE email = @email AND password = @password";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@email", email);
+                    command.Parameters.AddWithValue("@password", password);
+
+                    var result = command.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        int userId = (int)result;
+                        Console.WriteLine("User ID retrieved from database: " + userId);
+                        return userId;
+                    }
+                }
+            }
+
+            return 0; // Return some default value or handle it as needed
+        }
+
         private User ValidateUser(string email, string password)
         {
             using (SqlConnection con = new SqlConnection(conString))
@@ -92,16 +124,19 @@ namespace FMS.Pages.Users
                     {
                         cmd.Parameters.AddWithValue("@email", email);
                         cmd.Parameters.AddWithValue("@password", password);
-
+                        
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
+                                
                                 return new User
                                 {
+
                                     email = reader.GetString(reader.GetOrdinal("Email")),
                                     role = reader.GetString(reader.GetOrdinal("Role"))
                                 };
+                                
                             }
                             else
                             {

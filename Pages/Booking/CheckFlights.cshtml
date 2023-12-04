@@ -18,6 +18,7 @@
                 <th>Arrival Time</th>
                 <th>Available Seats</th>
                 <th>Ticket Price</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -29,20 +30,26 @@
             <td>@flight.origin</td>
             <td>@flight.destination</td>
             <td>@flight.departureTime</td>
-            <td>@flight.arrivalTime</td>
-            <td>@flight.availableSeats</td>
+                    <td>@flight.arrivalTime</td>
+                    <td>@flight.availableSeats</td>
             <td>@flight.ticketPrice</td>
-            <td>
+            @* <td>
                 <form method="post" asp-page-handler="BookNow">
                     <input type="hidden" name="flightID" value="@flight.flightID" />
                             <button type="submit" class="btn btn-outline-success">Book Now</button>
                             
                 </form>
-            </td>
-            @* <td>
-                <a asp-page="/CreateFlight" asp-route-availableSeats="@flight.availableSeats"
-                               asp-route-ticketPrice="@flight.ticketPrice" class="btn btn-outline-success">Book Now</a>
             </td> *@
+            <td>
+                        <a asp-page="/Booking/CreateBooking" asp-route-flightID="@flight.flightID"
+                           asp-route-airlineId="@flight.airlineId"
+                           asp-route-origin="@flight.origin"
+                           asp-route-destination="@flight.destination"
+                           asp-route-departureTime="@flight.departureTime"
+                           asp-route-arrivalTime="@flight.arrivalTime"
+                               asp-route-ticketPrice="@flight.ticketPrice"
+                           asp-route-availableSeats="@flight.availableSeats" class="btn btn-outline-success">Book Now</a>
+            </td>
         </tr>
     }
         </tbody>

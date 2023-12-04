@@ -3,6 +3,13 @@
 @{
     ViewData["Title"] = "Create Booking";
 }
+@if (Model.message.Length > 1)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Hello!</strong> @Model.message
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 <div class="container">
     <h2 class="text-center label">Booking Details</h2>
     <hr />
@@ -15,31 +22,58 @@
         @Html.AntiForgeryToken()
 
         <div class="row">
-            <!-- Left column -->
-            <div class="col">
-                <div class="form-group">
-                    <label for="firstName">First Name</label>
-                    <input type="text" required class="form-control mt-2" name="firstName" placeholder="First Name" value="@Model.booking.firstName">
-                </div>
-                <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" required class="form-control mt-2" name="lastName" placeholder="Last Name" value="@Model.booking.lastName">
-                </div>
-
-            </div>
-
-            <!-- Right column -->
+            
             <div class="col">
                 <div class="form-group">
                     <label for="number">Number of people</label>
-                    <input type="text" required class="form-control mt-2" name="number" placeholder="Number of people" value="@Model.booking.number">
+                    <input type="number" required class="form-control mt-2" name="number" placeholder="Number of people">
                 </div>
                 <div class="form-group">
                     <label for="payment">Payment Method</label>
-                    <input type="text" required class="form-control mt-2" name="payment" placeholder="Payment" value="@Model.booking.payment">
-                </div>          
+                    <input type="text" required class="form-control mt-2" name="payment" placeholder="Payment">
+                </div>
             </div>
         </div>
+        <!-- Left column -->
+        <div class="col">
+            <div class="form-group">
+                <label for="id">Flight Id</label>
+                <input type="text" class="form-control mt-2" name="flightid" placeholder="Flight Id" readonly value="@ViewData["flightID"]">
+            </div>
+            <div class="form-group">
+                <label for="airlineId">Airline</label>
+                <input type="text" class="form-control mt-2" name="airlineId" placeholder="airlineId" readonly value="@ViewData["airlineId"]">
+            </div>
+            <div class="form-group">
+                <label for="origin">Origin</label>
+                <input type="text" class="form-control mt-2" name="origin" placeholder="Origin" readonly value="@ViewData["origin"]">
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <input type="text" class="form-control mt-2" name="destination" placeholder="Destination" readonly value="@ViewData["destination"]">
+            </div>
+        </div>
+
+        <!-- Right column -->
+        <div class="col">
+            <div class="form-group">
+                <label for="fullname">Departure Time</label>
+                <input type="datetime-local" class="form-control mt-2" name="departureTime" placeholder="Departure Time" value="@ViewData["departureTime"]"> @* "@Model.CheckBooking.departureTime" *@
+            </div>
+            <div class="form-group">
+                <label for="fullname">Arrival Time</label>
+                <input type="datetime-local" class="form-control mt-2" name="arrivalTime" placeholder="Arrival Time" value="@ViewData["arrivalTime"]"> @* "@Model.flight.arrivalTime" *@
+            </div>
+            <div class="form-group">
+                <label for="fullname">Available Seats</label>
+                <input type="number" class="form-control mt-2" name="availableSeats" placeholder="Available Seats" readonly value="@ViewData["availableSeats"]">
+            </div>
+            <div class="form-group">
+                <label for="fullname">Ticket Price</label>
+                <input type="number" class="form-control mt-2" name="ticketPrice" placeholder="Ticket Price" readonly value="@ViewData["ticketPrice"]">
+            </div>
+        </div>
+
 
         <button type="submit" class="btn btn-primary mt-4">Submit</button>
 

@@ -31,10 +31,9 @@ namespace FMS.Pages.Users
                 return;
             }
 
-            // Check if the password matches the confirm password
             if (password != confirmPassword)
             {
-                Message = "Password and Confirm Password do not match.";
+                Message = "Password and Confirm Password don't match.";
                 return;
             }
 
@@ -47,7 +46,7 @@ namespace FMS.Pages.Users
                 name = name,
                 email = email,
                 password = encryptPassword,
-                role = "Staff" // Assuming a default role for signup
+                role = "Staff"
             };
 
             // Save user to the database

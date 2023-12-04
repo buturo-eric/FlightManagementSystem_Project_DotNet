@@ -16,11 +16,18 @@
         font-weight: 100;
         line-height: 1.2;
     }
+
+    .userimg {
+        width: 253px;
+        height: 238px;
+    }
 </style>
 <body>
-
+    <center>
     <h1>Welcome, Admin!</h1>
-
+    <img src="~/image/—Pngtree—recruitment job for social media_8812242.png" class="userimg" />
+    <div><h1>You're back!</h1></div>
+    </center>
     @if (User.Identity.IsAuthenticated)
     {
         <p>Admin successfully logged in.</p>

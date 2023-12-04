@@ -8,7 +8,7 @@ namespace FMS.Pages.Booking
     public class CheckBookingModel : PageModel
     {
         string conString = "Data Source=BUTURO\\SQLEXPRESS;Initial Catalog=FMSDB;Integrated Security=True";
-        public List<CheckFlight> BookingList { get; set; } = new List<CheckFlight>();
+        public List<CheckBookingAdm> BookingList { get; set; } = new List<CheckBookingAdm>();
 
         public void OnGet()
         {
@@ -16,9 +16,9 @@ namespace FMS.Pages.Booking
             BookingList = GetBookingList();
         }
 
-        private List<CheckFlight> GetBookingList()
+        private List<CheckBookingAdm> GetBookingList()
         {
-            List<CheckFlight> bookings = new List<CheckFlight>();
+            List<CheckBookingAdm> bookings = new List<CheckBookingAdm>();
 
             try
             {
@@ -35,21 +35,20 @@ namespace FMS.Pages.Booking
                         {
                             while (reader.Read())
                             {
-                                // Assuming column indices, update them based on your actual database schema
                                 string flightID = reader.GetString(0);
                                 string airlineId = reader.GetString(1);
                                 string origin = reader.GetString(2);
                                 string destination = reader.GetString(3);
                                 DateTime departureTime = reader.GetDateTime(4);
                                 DateTime arrivalTime = reader.GetDateTime(5);
-                                string availableSeats = reader.GetString(6);
-                                string ticketPrice = reader.GetString(7);
+                                /*string availableSeats = reader.GetString(6);*/
+                                string ticketPrice = reader.GetString(6);
 
                                 // Replace the airline ID with the airline name
                                 string airlineName = GetAirlineName(airlineId);
 
-                                // Create a CheckFlight object and add it to the list
-                                CheckFlight booking = new CheckFlight(flightID, airlineName, origin, destination, departureTime, arrivalTime, availableSeats, ticketPrice);
+                                // Create a CheckBookingAdm object and add it to the list
+                                CheckBookingAdm booking = new CheckBookingAdm(flightID, airlineName, origin, destination, departureTime, arrivalTime, ticketPrice);
                                 bookings.Add(booking);
                             }
                         }
@@ -62,6 +61,9 @@ namespace FMS.Pages.Booking
             {
                 // Handle exceptions appropriately
                 Console.WriteLine("There's a problem fetching booking data: " + ex.Message);
+                Console.WriteLine("Error fetching booking data: " + ex.ToString());
+                throw; // Rethrow the exception to ensure it's propagated up the call stack
+
             }
 
             return bookings;
