@@ -7,7 +7,7 @@ namespace FMS.Pages.Flight
 {
     public class EditFlightModel : PageModel
     {
-        String conString = "Data Source=BUTURO\\SQLEXPRESS;Initial Catalog=FMSDB;Integrated Security=True";
+        String conString = "Data Source=SQL5073.site4now.net;Initial Catalog=db_aa2c17_fmsdb;User Id=db_aa2c17_fmsdb_admin;Password=Hosting123!";
 
         public Flight flight = new Flight();
 
@@ -23,7 +23,7 @@ namespace FMS.Pages.Flight
 
                 using (SqlConnection con = new SqlConnection(conString))
                 {
-                    string qry = "SELECT flightID, departureTime, arrivalTime, availableSeats, ticketPrice, status FROM FLIGHTS WHERE flightID=@flightID";
+                    string qry = "SELECT flightID, airlineId, origin, destination, departureTime, arrivalTime, availableSeats, ticketPrice FROM FLIGHTS WHERE flightID=@flightID";
                     con.Open();
 
                     using (SqlCommand cmd = new SqlCommand(qry, con))
@@ -81,7 +81,7 @@ namespace FMS.Pages.Flight
             // updating info
             using (SqlConnection con = new SqlConnection(conString))
             {
-                string qry = "UPDATE FLIGHTS SET flightID=@flightID, departureTime=@departureTime, arrivalTime=@arrivalTime, availableSeats=@availableSeats, ticketPrice=@ticketPrice, status=@status WHERE flightID=@flightID";
+                string qry = "UPDATE FLIGHTS SET flightID=@flightID, departureTime=@departureTime, arrivalTime=@arrivalTime, availableSeats=@availableSeats, ticketPrice=@ticketPrice WHERE flightID=@flightID";
 
                 try
                 {

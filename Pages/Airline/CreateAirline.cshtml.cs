@@ -7,7 +7,7 @@ namespace FMS.Pages.Airline
 {
     public class CreateAirlineModel : PageModel
     {
-        String conString = "Data Source=BUTURO\\SQLEXPRESS;Initial Catalog=FMSDB;Integrated Security=True";
+        String conString = "Data Source=SQL5073.site4now.net;Initial Catalog=db_aa2c17_fmsdb;User Id=db_aa2c17_fmsdb_admin;Password=Hosting123!";
 
         public Airline airline = new Airline();
 

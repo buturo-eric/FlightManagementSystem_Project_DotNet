@@ -7,7 +7,7 @@ namespace FMS.Pages.Booking
 {
     public class CheckBookingModel : PageModel
     {
-        string conString = "Data Source=BUTURO\\SQLEXPRESS;Initial Catalog=FMSDB;Integrated Security=True";
+        string conString = "Data Source=SQL5073.site4now.net;Initial Catalog=db_aa2c17_fmsdb;User Id=db_aa2c17_fmsdb_admin;Password=Hosting123!";
         public List<CheckBookingAdm> BookingList { get; set; } = new List<CheckBookingAdm>();
 
         public void OnGet()

@@ -8,7 +8,7 @@ namespace FMS.Pages.Users
 {
     public class LoginModel : PageModel
     {
-        private readonly string conString = "Data Source=BUTURO\\SQLEXPRESS;Initial Catalog=FMSDB;Integrated Security=True";
+        private readonly string conString = "Data Source=SQL5073.site4now.net;Initial Catalog=db_aa2c17_fmsdb;User Id=db_aa2c17_fmsdb_admin;Password=Hosting123!";
 
         User users = new User();
 
@@ -35,8 +35,6 @@ namespace FMS.Pages.Users
 
             // Hash the password
             string encryptPassword = EncryptPassword(Password);
-
-            Console.WriteLine($"EncryptPassword: {encryptPassword}");
 
 
             // Validate user credentials
@@ -108,7 +106,7 @@ namespace FMS.Pages.Users
                 }
             }
 
-            return 0; // Return some default value or handle it as needed
+            return 0;
         }
 
         private User ValidateUser(string email, string password)

@@ -20,7 +20,7 @@
                     <th>Departure Time</th>
                     <th>Arrival Time</th>
                     <th>Ticket Price</th>
-                    @* <th>Action</th> *@
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +34,9 @@
                          <td>@booking.departureTime</td>
                         <td>@booking.arrivalTime</td>
                         <td>@booking.ticketPrice</td>
+                        <td>
+                            <a class="btn btn-danger" href="/Booking/DeleteBooking?flightId=@booking.flightID">Cancel</a>
+                        </td>
                         @* <td>
                             <form method="post" asp-page-handler="CancelBooking" asp-route-flightID="@booking.flightID">
                                 <button type="submit" class="btn btn-danger">Cancel Booking</button>
